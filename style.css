@@ -1,3 +1,10 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box
+}
+
+
 .logo{
     width: 80%;
     height:80%;
@@ -10,3 +17,15 @@
 
 
 }
+
+.logo2{
+    width: 7%;
+    height:7%;
+
+}
+/* .adminimage{
+    width:100px;
+    object-fit: contain;
+
+
+} */
