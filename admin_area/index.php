@@ -23,6 +23,7 @@
  }
  
     </style>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
   <div class="container-fluid p-0">
@@ -51,9 +52,9 @@
         <div class="button text-center">
           <button class="my-3"><a href="" class="nav-link text-light bg-info my-1">Insert Products</a></button>
           <button><a href="" class="nav-link text-light bg-info my-1">View products</a></button>
-          <button><a href="" class="nav-link text-light bg-info my-1">Insert Categories</a></button>
+          <button><a href="index.php?insert_category" class="nav-link text-light bg-info my-1">Insert Categories</a></button>
           <button><a href="" class="nav-link text-light bg-info my-1">View Categories</a></button>
-          <button><a href="" class="nav-link text-light bg-info my-1">Insert Brands</a></button>
+          <button><a href="index.php?insert_brands" class="nav-link text-light bg-info my-1">Insert Brands</a></button>
           <button><a href="" class="nav-link text-light bg-info my-1">View Brands</a></button>
           <button><a href="" class="nav-link text-light bg-info my-1">All Brands</a></button>
           <button><a href="" class="nav-link text-light bg-info my-1">All orders</a></button>
@@ -63,6 +64,17 @@
         </div>
 
       </div>
+    </div>
+
+    <div class="container my-5">
+      <?php 
+      if(isset($_GET['insert_category'])){
+        include('insert_categories.php');
+      }
+      if(isset($_GET['insert_brands'])){
+        include('insert_brands.php');
+      }
+      ?>
     </div>
 
     <div class="bg-info p-3 text-center footer">
