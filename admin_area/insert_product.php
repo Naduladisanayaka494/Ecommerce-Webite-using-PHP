@@ -1,3 +1,10 @@
+
+<?php
+include('../includes/connect.php')
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,20 +36,34 @@
             <div class="form-outline mb-4 w-50 m-auto">
                 <select name="product_category" id="" class="form-select">
                     <option value="">Select a Category</option>
-                    <option value="">Category1</option>
-                    <option value="">Category2</option>
-                    <option value="">Category3</option>
-                    <option value="">Category4</option>
+                    <?php
+        $select_categories="Select * from `categories`";
+        $result_categories=mysqli_query($con, $select_categories);
+        while($row_data=mysqli_fetch_assoc( $result_categories)){
+          $category_title=$row_data['category_title'];
+          $category_id=$row_data['category_id'];
+          echo "<option value='$category_id'> $category_title</option>";
+        }
+        
+        
+        ?>
                 </select>
      
             </div>
             <div class="form-outline mb-4 w-50 m-auto">
                 <select name="product_brands" id="" class="form-select">
                     <option value="">Select a Brand</option>
-                    <option value="">brand1</option>
-                    <option value="">brand2</option>
-                    <option value="">brand3</option>
-                    <option value="">brand4</option>
+                    <?php
+        $select_categories="Select * from `brands`";
+        $result_categories=mysqli_query($con, $select_categories);
+        while($row_data=mysqli_fetch_assoc( $result_categories)){
+          $category_title=$row_data['brand_title'];
+          $category_id=$row_data['brand_id'];
+          echo "<option value='$category_id'> $category_title</option>";
+        }
+        
+        
+        ?>
                 </select>
      
             </div>
