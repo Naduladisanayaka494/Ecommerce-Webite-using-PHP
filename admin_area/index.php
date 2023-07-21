@@ -50,7 +50,7 @@
           <p class="text-light text-center" >Admin Name</p>
         </div>
         <div class="button text-center">
-          <button class="my-3"><a href="" class="nav-link text-light bg-info my-1">Insert Products</a></button>
+          <button class="my-3"><a href="insert_product.php" class="nav-link text-light bg-info my-1">Insert Products</a></button>
           <button><a href="" class="nav-link text-light bg-info my-1">View products</a></button>
           <button><a href="index.php?insert_category" class="nav-link text-light bg-info my-1">Insert Categories</a></button>
           <button><a href="" class="nav-link text-light bg-info my-1">View Categories</a></button>
