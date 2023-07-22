@@ -133,7 +133,7 @@ include('functions/commonfunctions.php');
           <!-- ... (previous code) ... -->
 
 <?php
-getproducts();
+getallproducts();
 get_unique_categories();
 get_unique_brands()
 ?>
@@ -186,9 +186,7 @@ get_unique_brands()
 
 
     <div class="bg-info p-3 text-center">
-       <?php 
-       include("./includes/footer.php")
-       ?>
+        <p>All right reserved  Design by Nadula 2022</p>
 
     </div>
 
