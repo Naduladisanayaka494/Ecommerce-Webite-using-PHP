@@ -133,7 +133,9 @@ include('functions/commonfunctions.php');
           <!-- ... (previous code) ... -->
 
 <?php
-getproducts()
+getproducts();
+get_unique_categories();
+get_unique_brands()
 ?>
 
 <!-- ... (remaining code) ... -->
@@ -169,7 +171,8 @@ getproducts()
         <li class="nav-item bg-info">
           <a href="#" class="nav-link text-light"><h4>Categories</h4></a>
           <?php
-          getcategories()
+          getcategories();
+        
           
         ?>
 
