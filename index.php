@@ -135,7 +135,8 @@ include('functions/commonfunctions.php');
 <?php
 getproducts();
 get_unique_categories();
-get_unique_brands()
+get_unique_brands();
+ 
 ?>
 
 <!-- ... (remaining code) ... -->
