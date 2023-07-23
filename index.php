@@ -1,10 +1,7 @@
 <?php
 include('includes/connect.php');
 include('functions/commonfunctions.php');
-
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,16 +41,21 @@ include('functions/commonfunctions.php');
   </style>
   <link rel="stylesheet" href="style.css">
 
+  <!-- Font Awesome JS CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
+    integrity="sha512-AWnAjMF96LlXzX6KRScV3F+grv7/6RXgeALbzT0H3iPn02vHNNO3VYKdEsmVT5ez0B7NYNjbJGRvPllfiYxRw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </head>
 
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-info">
     <a class="navbar-brand" href="#"><img src="./images/logo.png" class="logo"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
@@ -63,18 +65,6 @@ include('functions/commonfunctions.php');
         <li class="nav-item">
           <a class="nav-link" href="display_all.php">Products</a>
         </li>
-        <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              Dropdown
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li> -->
         <li class="nav-item">
           <a class="nav-link" href="#">Register</a>
         </li>
@@ -82,118 +72,92 @@ include('functions/commonfunctions.php');
           <a class="nav-link" href="#">Contact</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping">Cart</i></a>
+          <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Total Price:</a>
         </li>
-        <!-- <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li> -->
       </ul>
 
       <!-- Move the search field and button to the left -->
       <form class="d-flex" action="search_product.php" method="get">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
-        <input type="submit"  value="Search" class="btn btn-outline-light" name="search_data_product">
+        <input type="submit" value="Search" class="btn btn-outline-light" name="search_data_product">
       </form>
     </div>
   </nav>
 
-  <!-- Font Awesome JS CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
-    integrity="sha512-AWnAjMF96LlXzX6KRScV3F+grv7/6RXgeALbzT0H3iPn02vHNNO3VYKdEsmVT5ez0B7NYNjbJGRvPllfiYxRw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <?php
+  cart();
+  ?>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
-    <ul class="navbar-nav mr-auto">
-    <li class="nav-item active">
-          <a class="nav-link" href="/">Welcome Guest <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
-        </li>
-
+  <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+    <ul class="navbar-nav mr-auto text-center">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Welcome Guest <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Login</a>
+      </li>
     </ul>
-    </nav>
+  </nav>
 
-    <div class="bg-light">
-        <h3 class="text-center">Hidden Store</h3>
-        <p class="text-center">communication is at the heart of e-commerce and community</p>
+  <div class="bg-light">
+    <h3 class="text-center">Hidden Store</h3>
+    <p class="text-center">communication is at the heart of e-commerce and community</p>
+  </div>
 
-    </div>
-
-    <div class="row">
+  <div class="row">
     <!-- First main section: col-md-10 -->
     <div class="col-md-10">
-        <!-- First group inside col-md-10 -->
-        <div class="row">
-          <!-- ... (previous code) ... -->
+      <!-- First group inside col-md-10 -->
+      <div class="row">
+        <!-- ... (previous code) ... -->
+        <?php
+        getproducts();
+        get_unique_categories();
+        get_unique_brands();
+        ?>
+        <!-- ... (remaining code) ... -->
+        <div class="col-md-4  mb-2">
 
-<?php
-getproducts();
-get_unique_categories();
-get_unique_brands();
- 
-?>
-
-<!-- ... (remaining code) ... -->
-
-  
-          
-            <div class="col-md-4  mb-2">
-
-            </div>
-            <div class="col-md-4  mb-2">
- 
-            </div>
         </div>
+        <div class="col-md-4  mb-2">
 
-        <!-- Second group inside col-md-10 -->
-        <!-- Add your content for the second group here -->
+        </div>
+      </div>
+
+      <!-- Second group inside col-md-10 -->
+      <!-- Add your content for the second group here -->
 
     </div>
     <!-- Second main section: col-md-2 -->
     <div class="col-md-2 bg-secondary p-0">
-       <ul class="navbar-nav me-auto text-center"> 
+      <ul class="navbar-nav me-auto text-center">
         <li class="nav-item bg-info">
           <a href="#" class="nav-link text-light"><h4>Delivery Brands</h4></a>
-
         </li>
         <?php
         getbrands()
-              
         ?>
-      
-       </ul>
-       <ul class="navbar-nav me-auto text-center"> 
+      </ul>
+      <ul class="navbar-nav me-auto text-center">
         <li class="nav-item bg-info">
           <a href="#" class="nav-link text-light"><h4>Categories</h4></a>
           <?php
           getcategories();
-        
-          
-        ?>
-
+          ?>
         </li>
-  
-       </ul>
+      </ul>
     </div>
-</div>
+  </div>
 
-
-
-
-    <div class="bg-info p-3 text-center">
-       <?php 
-       include("./includes/footer.php")
-       ?>
-
-    </div>
+  <div class="bg-info p-3 text-center">
+    <?php 
+    include("./includes/footer.php")
+    ?>
+  </div>
 
 </body>
-
 
 </html>

@@ -101,6 +101,10 @@ include('functions/commonfunctions.php');
     </div>
   </nav>
 
+  <?php
+  cart();
+  ?>
+
   <!-- Font Awesome JS CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
     integrity="sha512-AWnAjMF96LlXzX6KRScV3F+grv7/6RXgeALbzT0H3iPn02vHNNO3VYKdEsmVT5ez0B7NYNjbJGRvPllfiYxRw=="
