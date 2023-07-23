@@ -130,38 +130,15 @@ include('functions/commonfunctions.php');
     <div class="col-md-10">
         <!-- First group inside col-md-10 -->
         <div class="row">
-            <div class="col-md-4">
-            <div class='col-md-4 mb-2'>
-                    <div class='card'>
-                        <img src='images/apple.jpg' class='card-img-top' alt='...'>
-                        <div class='card-body'>
-                            <h5 class='card-title'>$product_title</h5>
-                            <p class='card-text'> $product_description </p>
-                            <a href='#' class='btn btn-info'>Add to Cart</a>
-                            <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
-                        </div>
-                    </div>
-                </div>
+            <?php
+            view_details();
+            
+            ?>
+  
 
-            </div>
-            <div class="col-md-8">
-    <div class="col-md-12">
-        <h4 class="text-center text-info mb-5">Related Products</h4>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <img src="images/apple.jpg" class="card-img-top" alt="...">
-        </div>
-        <div class="col-md-6">
-            <img src="images/apple.jpg" class="card-img-top" alt="...">
-        </div>
-    </div>
-</div>
-
-          <!-- ... (previous code) ... -->
+       
 
 <?php
-
 get_unique_categories();
 get_unique_brands()
 ?>
