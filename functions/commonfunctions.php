@@ -22,7 +22,7 @@ function getproducts()
                             <h5 class='card-title'>$product_title</h5>
                             <p class='card-text'> $product_description </p>
                             <a href='#' class='btn btn-info'>Add to Cart</a>
-                            <a href='#' class='btn btn-secondary'>View more</a>
+                            <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
                         </div>
                     </div>
                 </div>";
@@ -52,7 +52,7 @@ function getallproducts()
                             <h5 class='card-title'>$product_title</h5>
                             <p class='card-text'> $product_description </p>
                             <a href='#' class='btn btn-info'>Add to Cart</a>
-                            <a href='#' class='btn btn-secondary'>View more</a>
+                            <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
                         </div>
                     </div>
                 </div>";
@@ -93,7 +93,7 @@ function get_unique_categories()
                                 <h5 class='card-title'>$product_title</h5>
                                 <p class='card-text'> $product_description </p>
                                 <a href='#' class='btn btn-info'>Add to Cart</a>
-                                <a href='#' class='btn btn-secondary'>View more</a>
+                                <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
                             </div>
                         </div>
                     </div>";
@@ -137,7 +137,7 @@ function get_unique_brands()
                                 <h5 class='card-title'>$product_title</h5>
                                 <p class='card-text'> $product_description </p>
                                 <a href='#' class='btn btn-info'>Add to Cart</a>
-                                <a href='#' class='btn btn-secondary'>View more</a>
+                                <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
                             </div>
                         </div>
                     </div>";
@@ -207,7 +207,7 @@ function searchproduct()
                             <h5 class='card-title'>$product_title</h5>
                             <p class='card-text'> $product_description </p>
                             <a href='#' class='btn btn-info'>Add to Cart</a>
-                            <a href='#' class='btn btn-secondary'>View more</a>
+                            <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
                         </div>
                     </div>
                 </div>";
