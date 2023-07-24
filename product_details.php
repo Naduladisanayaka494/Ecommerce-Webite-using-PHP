@@ -82,7 +82,8 @@ include('functions/commonfunctions.php');
           <a class="nav-link" href="#">Contact</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping">Cart</i></a>
+        <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i><sup><?php
+         cart_item(); ?></sup>Cart</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Total Price:</a>
