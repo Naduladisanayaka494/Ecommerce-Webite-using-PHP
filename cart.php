@@ -110,6 +110,7 @@ include('functions/commonfunctions.php');
   <div class="container">
     <!-- First main section: col-md-10 -->
    <div class="row">
+    <form action="" metho="post">
     <table class="table table-bordered text-center">
         <thead>
             <tr>
@@ -122,8 +123,7 @@ include('functions/commonfunctions.php');
             </tr>
         </thead>
     <!-- ... (previous code) ... -->
-
-<tbody>
+    <tbody>
     <?php
     global $con;
     $ip = getIPAddress();
@@ -138,22 +138,34 @@ include('functions/commonfunctions.php');
         $result_products = mysqli_query($con, $select_products);
 
         while ($row_product_price = mysqli_fetch_array($result_products)) {
-            $product_price = $row_product_price['product_price']; // Corrected this line
-            $price_table = $row_product_price['product_price'];
+            $product_price = $row_product_price['product_price'];
             $price_title = $row_product_price['product_title'];
             $price_image1 = $row_product_price['product_image1'];
-            $total += $product_price; // Sum the product prices directly (no need for an array)
+            $quantity = $row['quantity']; // Get the quantity of the current product
+
+            $total_product_price = $product_price * $quantity; // Calculate total price for each product based on its quantity
+            $total += $total_product_price; // Add the total price of this product to the overall total
     ?>
             <tr>
                 <td><?php echo $price_title; ?></td>
                 <td><img src="./images/<?php echo $price_image1?>" alt="" class="cart_img"></td>
-                <td><input type="text" name="" id="" class="form-input w-50"></td>
-                <td><?php echo $product_price; ?>/-</td>
+                <td><input type="text" name="qty[<?php echo $product_id; ?>]" value="<?php echo $quantity; ?>" class="form-input w-50"></td>
+                <?php
+                 $ip = getIPAddress();
+                 if(isset($_POST['update_cart'])){
+                    $quantities=$_POST['qty'][$product_id]; // Get the updated quantity for the current product
+                    $update_cart="UPDATE `cart_details` SET quantity=$quantities WHERE product_id='$product_id' AND ip_address='$ip'";
+                    mysqli_query($con, $update_cart);
+                    $product_price = $product_price * $quantities;
+                 }
+                ?>
+                <td><?php echo $total_product_price; ?>/-</td>
                 <td><input type="checkbox"></td>
                 <td>
-                    <button class="bg-info px-3 py-2 boarder-0">
+                    <!-- <button class="bg-info px-3 py-2 boarder-0">
                         Update
-                    </button>
+                    </button> -->
+                    <input type="submit" value="Update Cart" class="bg-info px-3 py-2 boarder-0" name="update_cart">
                     <button class="bg-secondry p-3 py-2 boarder-0">
                         Remove
                     </button>
@@ -174,6 +186,7 @@ include('functions/commonfunctions.php');
         <a href="index.php"><button  class="bg-secondry p-3 py-2 boarder-0"> Check Out</button></a>
     </div>
    </div>
+   </form>
       </div>
 
       <!-- Second group inside col-md-10 -->
