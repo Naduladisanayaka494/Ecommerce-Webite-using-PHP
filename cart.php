@@ -38,6 +38,11 @@ include('functions/commonfunctions.php');
     .navbar .navbar-brand {
       margin-right: 20px;
     }
+    .cart_img{
+    width:50px;
+    height:50px;
+    object-fit:contain;
+}
   </style>
   <link rel="stylesheet" href="style.css">
 
@@ -113,23 +118,58 @@ include('functions/commonfunctions.php');
                 <th>Quantity</th>
                 <th>Total Price</th>
                 <th>Remove</th>
-                <th>Operations</th>
+                <th colSpan="2">Operations</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+    <!-- ... (previous code) ... -->
 
+<tbody>
+    <?php
+    global $con;
+    $ip = getIPAddress();
+    $cart_query = "SELECT * FROM `cart_details` WHERE ip_address='$ip'";
+    $result_query = mysqli_query($con, $cart_query);
+
+    $total = 0; // Initialize total to zero
+
+    while ($row = mysqli_fetch_array($result_query)) {
+        $product_id = $row['product_id'];
+        $select_products = "SELECT * FROM `products` WHERE product_id='$product_id'";
+        $result_products = mysqli_query($con, $select_products);
+
+        while ($row_product_price = mysqli_fetch_array($result_products)) {
+            $product_price = $row_product_price['product_price']; // Corrected this line
+            $price_table = $row_product_price['product_price'];
+            $price_title = $row_product_price['product_title'];
+            $price_image1 = $row_product_price['product_image1'];
+            $total += $product_price; // Sum the product prices directly (no need for an array)
+    ?>
+            <tr>
+                <td><?php echo $price_title; ?></td>
+                <td><img src="./images/<?php echo $price_image1?>" alt="" class="cart_img"></td>
+                <td><input type="text" name="" id="" class="form-input w-50"></td>
+                <td><?php echo $product_price; ?>/-</td>
+                <td><input type="checkbox"></td>
+                <td>
+                    <button class="bg-info px-3 py-2 boarder-0">
+                        Update
+                    </button>
+                    <button class="bg-secondry p-3 py-2 boarder-0">
+                        Remove
+                    </button>
+                </td>
             </tr>
-        </tbody>
+    <?php
+        }
+    }
+    ?>
+</tbody>
+
+<!-- ... (remaining code) ... -->
+
     </table>
     <div class="d-flex">
-        <h4 class="px-3">Subtotal:<strong class="test info">/-</strong>
+        <h4 class="px-3">Subtotal:<?php echo $total?><strong class="test info">/-</strong>
         <a href="index.php"><button  class="bg-info px-3 py-2 boarder-0"> Continue Shoping</button></a>
         <a href="index.php"><button  class="bg-secondry p-3 py-2 boarder-0"> Check Out</button></a>
     </div>
