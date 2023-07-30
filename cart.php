@@ -9,7 +9,7 @@ include('functions/commonfunctions.php');
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ecommerce Website using PHP and MYSQL</title>
+  <title>Ecommerce Website-Cart Details</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
@@ -75,16 +75,10 @@ include('functions/commonfunctions.php');
           <a class="nav-link" href="cart.php"><i class="fas fa-shopping-cart"></i><sup><?php
          cart_item(); ?></sup>Cart</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Total Price:<?php total_cart_price() ?>/-</a>
-        </li>
+       
       </ul>
 
-      <!-- Move the search field and button to the left -->
-      <form class="d-flex" action="search_product.php" method="get">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
-        <input type="submit" value="Search" class="btn btn-outline-light" name="search_data_product">
-      </form>
+   
     </div>
   </nav>
 
@@ -108,24 +102,38 @@ include('functions/commonfunctions.php');
     <p class="text-center">communication is at the heart of e-commerce and community</p>
   </div>
 
-  <div class="row">
+  <div class="container">
     <!-- First main section: col-md-10 -->
-    <div class="col-md-10">
-      <!-- First group inside col-md-10 -->
-      <div class="row">
-        <!-- ... (previous code) ... -->
-        <?php
-        getproducts();
-        get_unique_categories();
-        get_unique_brands();
-        ?>
-        <!-- ... (remaining code) ... -->
-        <div class="col-md-4  mb-2">
+   <div class="row">
+    <table class="table table-bordered text-center">
+        <thead>
+            <tr>
+                <th>Product Title</th>
+                <th>Product Image</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+                <th>Remove</th>
+                <th>Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
 
-        </div>
-        <div class="col-md-4  mb-2">
-
-        </div>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex">
+        <h4 class="px-3">Subtotal:<strong class="test info">/-</strong>
+        <a href="index.php"><button  class="bg-info px-3 py-2 boarder-0"> Continue Shoping</button></a>
+        <a href="index.php"><button  class="bg-secondry p-3 py-2 boarder-0"> Check Out</button></a>
+    </div>
+   </div>
       </div>
 
       <!-- Second group inside col-md-10 -->
@@ -134,22 +142,7 @@ include('functions/commonfunctions.php');
     </div>
     <!-- Second main section: col-md-2 -->
     <div class="col-md-2 bg-secondary p-0">
-      <ul class="navbar-nav me-auto text-center">
-        <li class="nav-item bg-info">
-          <a href="#" class="nav-link text-light"><h4>Delivery Brands</h4></a>
-        </li>
-        <?php
-        getbrands()
-        ?>
-      </ul>
-      <ul class="navbar-nav me-auto text-center">
-        <li class="nav-item bg-info">
-          <a href="#" class="nav-link text-light"><h4>Categories</h4></a>
-          <?php
-          getcategories();
-          ?>
-        </li>
-      </ul>
+   
     </div>
   </div>
 
