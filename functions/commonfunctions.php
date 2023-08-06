@@ -309,8 +309,9 @@ function cart(){
     }else{
         $insert_query="insert into `cart_details` (product_id,ip_address,quantity)values($get_product_id,'$ip',0)";
         $result_query = mysqli_query($con, $insert_query);
-        echo "<script>window.open('index.php','_self')</script>";
         echo "<script>alert('Item is added to Cart')</script>";
+        echo "<script>window.open('index.php','_self')</script>";
+      
     }
 
    

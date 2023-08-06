@@ -148,27 +148,34 @@ include('functions/commonfunctions.php');
     ?>
             <tr>
                 <td><?php echo $price_title; ?></td>
-                <td><img src="./images/<?php echo $price_image1?>" alt="" class="cart_img"></td>
+                <td><img src="./admin_area/product_images/<?php echo $price_image1?>" alt="" class="cart_img"></td>
                 <td><input type="text" name="qty[<?php echo $product_id; ?>]" value="<?php echo $quantity; ?>" class="form-input w-50"></td>
                 <?php
                  $ip = getIPAddress();
                  if(isset($_POST['update_cart'])){
                     $quantities=$_POST['qty'][$product_id]; // Get the updated quantity for the current product
                     $update_cart="UPDATE `cart_details` SET quantity=$quantities WHERE product_id='$product_id' AND ip_address='$ip'";
-                    mysqli_query($con, $update_cart);
+                    $run_update=mysqli_query($con, $update_cart);
                     $product_price = $product_price * $quantities;
+                    if($run_update){
+                      if($run_update){
+                        echo "<script>window.open('cart.php','_self')</script>";
+                      }
+                    }
                  }
                 ?>
                 <td><?php echo $total_product_price; ?>/-</td>
-                <td><input type="checkbox"></td>
+                <td><input type="checkbox" name="removeitem[]" value="<?php echo $product_id?>"></td>
                 <td>
                     <!-- <button class="bg-info px-3 py-2 boarder-0">
                         Update
                     </button> -->
                     <input type="submit" value="Update Cart" class="bg-info px-3 py-2 boarder-0" name="update_cart">
-                    <button class="bg-secondry p-3 py-2 boarder-0">
+                    <!-- <button class="bg-secondry p-3 py-2 boarder-0">
                         Remove
-                    </button>
+                    </button> -->
+                    <input type="submit" value="Remove Cart" class="bg-info px-3 py-2 boarder-0" name="remove_cart">
+
                 </td>
             </tr>
     <?php
@@ -187,6 +194,33 @@ include('functions/commonfunctions.php');
     </div>
    </div>
    </form>
+   <!--function-->
+  <?php
+     global $con;
+     if(isset($_POST['remove_cart'])){
+      foreach($_POST['removeitem'] as $remove_id){
+        echo $remove_id;
+        $delete_query="Delete from `cart_details` where product_id=$remove_id";
+        $run_delete=mysqli_query($con,$delete_query);
+        if($run_delete){
+          if($run_delete){
+            echo "<script>window.open('cart.php','_self')</script>";
+          }
+        }
+
+      }
+
+
+     }
+  
+  
+  
+  ?>
+
+
+
+
+
       </div>
 
       <!-- Second group inside col-md-10 -->
