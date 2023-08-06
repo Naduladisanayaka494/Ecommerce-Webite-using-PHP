@@ -110,7 +110,7 @@ include('functions/commonfunctions.php');
   <div class="container">
     <!-- First main section: col-md-10 -->
    <div class="row">
-    <form action="" metho="post">
+    <form action="" method="post">
     <table class="table table-bordered text-center">
         <thead>
             <tr>
@@ -182,8 +182,8 @@ include('functions/commonfunctions.php');
     </table>
     <div class="d-flex">
         <h4 class="px-3">Subtotal:<?php echo $total?><strong class="test info">/-</strong>
-        <a href="index.php"><button  class="bg-info px-3 py-2 boarder-0"> Continue Shoping</button></a>
-        <a href="index.php"><button  class="bg-secondry p-3 py-2 boarder-0"> Check Out</button></a>
+    
+       
     </div>
    </div>
    </form>
@@ -198,7 +198,10 @@ include('functions/commonfunctions.php');
    
     </div>
   </div>
-
+  <div>
+  <a href="index.php"><button  class="bg-info px-3 py-2 boarder-0"> Continue Shoping</button></a>
+  <a href="checkout.php"><button  class="bg-secondry p-3 py-2 boarder-0"> Check Out</button></a>
+  </div>
   <div class="bg-info p-3 text-center">
     <?php 
     include("./includes/footer.php")
