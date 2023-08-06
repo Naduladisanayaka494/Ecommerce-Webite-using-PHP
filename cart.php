@@ -112,25 +112,29 @@ include('functions/commonfunctions.php');
    <div class="row">
     <form action="" method="post">
     <table class="table table-bordered text-center">
-        <thead>
-            <tr>
-                <th>Product Title</th>
-                <th>Product Image</th>
-                <th>Quantity</th>
-                <th>Total Price</th>
-                <th>Remove</th>
-                <th colSpan="2">Operations</th>
-            </tr>
-        </thead>
-    <!-- ... (previous code) ... -->
-    <tbody>
+  
     <?php
     global $con;
     $ip = getIPAddress();
     $cart_query = "SELECT * FROM `cart_details` WHERE ip_address='$ip'";
     $result_query = mysqli_query($con, $cart_query);
-
+    $result_count=mysqli_num_rows($result_query);
     $total = 0; // Initialize total to zero
+    if( $result_count>0){
+      echo "      <thead>
+      <tr>
+          <th>Product Title</th>
+          <th>Product Image</th>
+          <th>Quantity</th>
+          <th>Total Price</th>
+          <th>Remove</th>
+          <th colSpan='2'>Operations</th>
+      </tr>
+  </thead>
+<!-- ... (previous code) ... -->
+<tbody>";
+
+   
 
     while ($row = mysqli_fetch_array($result_query)) {
         $product_id = $row['product_id'];
@@ -178,8 +182,11 @@ include('functions/commonfunctions.php');
 
                 </td>
             </tr>
-    <?php
+    <?php }
         }
+    }
+    else{
+      echo"<h2 class='text-center text-danger'>Cart is empty</h2>";
     }
     ?>
 </tbody>
@@ -187,11 +194,12 @@ include('functions/commonfunctions.php');
 <!-- ... (remaining code) ... -->
 
     </table>
-    <div class="d-flex">
-        <h4 class="px-3">Subtotal:<?php echo $total?><strong class="test info">/-</strong>
+    <!-- <div class="d-flex">
+      <?php?>
+    <h4 class="px-3">Subtotal:<?php echo $total?><strong class="test info">/-</strong>
     
        
-    </div>
+    </div> -->
    </div>
    </form>
    <!--function-->
@@ -233,9 +241,24 @@ include('functions/commonfunctions.php');
     </div>
   </div>
   <div>
-  <a href="index.php"><button  class="bg-info px-3 py-2 boarder-0"> Continue Shoping</button></a>
-  <a href="checkout.php"><button  class="bg-secondry p-3 py-2 boarder-0"> Check Out</button></a>
-  </div>
+    <?php
+    
+    global $con;
+    $ip = getIPAddress();
+    $cart_query = "SELECT * FROM `cart_details` WHERE ip_address='$ip'";
+    $result_query = mysqli_query($con, $cart_query);
+    $result_count=mysqli_num_rows($result_query);
+    if( $result_count>0){
+      echo "<h4 class='px-3'>Subtotal: $total<strong class='test info'>/-</strong></h4>
+      <a href='checkout.php'><button class='bg-secondry p-3 py-2 boarder-0'>Check Out</button></a>";
+    } else {
+      echo "<a href='index.php'><button class='bg-info px-3 py-2 boarder-0'>Continue Shopping</button></a>";
+    }
+    
+    ?>
+
+</div>
+
   <div class="bg-info p-3 text-center">
     <?php 
     include("./includes/footer.php")
