@@ -113,15 +113,28 @@ if(isset($_POST['user_registration'])){
   $user_image1=$_FILES['user_image']['name'];
   $user_image_tmp=$_FILES['user_image']['tmp_name'];
   $user_ip= getIPAddress();
-  
-  move_uploaded_file($user_image_tmp,"./user_images/$user_image1");
+ $select_query = "SELECT * FROM `user_table` WHERE username='$user_username' OR user_email='$user_email'";
+  $result=mysqli_query($con, $select_query);
+  $rows_count=mysqli_num_rows($result);
+  if($rows_count>0){
+     echo "<script>alert('Username or Email already exsits')</script>";
+  }elseif($user_password!=$conf_user_password)
+      
+  {
+    echo "<script>alert('Passwords not match')</script>";
+  }else{
+      move_uploaded_file($user_image_tmp,"./user_images/$user_image1");
 $insert_query="INSERT INTO `user_table` (username, user_email, user_password, user_image, user_ip, user_address, user_mobile) VALUES ('$user_username', '$user_email', '$user_password', '$user_image1', '$user_ip', '$user_address', '$user_contact')";
   $sql_execute=mysqli_query($con,$insert_query);
   if($sql_execute){
     echo "<script>alert('Data inserted sucessfully')</script>";
-  }else{
+  }else {
       die(mysqli_error($con));
   }
+
+  }
+  
+
 }
 
 
