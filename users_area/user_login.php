@@ -100,6 +100,7 @@ if (isset($_POST['user_login'])) {
             $row_count = mysqli_num_rows($result);
 
             if ($row_count > 0) {
+                $_SESSION['username']=$user_username;
                 $row_data = mysqli_fetch_assoc($result);
 
                 // Verify the password
@@ -111,9 +112,11 @@ if (isset($_POST['user_login'])) {
 
                     // Adjust your logic based on your requirements
                     if ($row_count == 1 && $row_count_cart == 0) {
+                        $_SESSION['username']=$user_username;
                         echo "<script>alert('Login Successfully')</script>";
                         echo "<script>window.open('./profile.php','_self')</script>";
                     } else {
+                        $_SESSION['username']=$user_username;
                         echo "<script>alert('Login Successfully')</script>";
                         echo "<script>window.open('./payment.php','_self')</script>";
                     }
