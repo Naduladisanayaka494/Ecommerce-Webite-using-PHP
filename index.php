@@ -98,7 +98,7 @@ include('functions/commonfunctions.php');
         <a class="nav-link" href="/">Welcome Guest <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Login</a>
+        <a class="nav-link" href="./users_area/user_login.php">Login</a>
       </li>
     </ul>
   </nav>

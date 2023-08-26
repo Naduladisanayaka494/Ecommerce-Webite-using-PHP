@@ -1,3 +1,9 @@
+<?php
+@include('../includes/connect.php');
+@include('../functions/commonfunctions.php');
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,6 +42,9 @@
     .navbar .navbar-brand {
       margin-right: 20px;
     }
+    body{
+      overflow-x: hidden;
+    }
   </style>
   <link rel="stylesheet" href="style.css">
 
@@ -49,7 +58,7 @@
         <h2 class="text-center"> User Login</h2>
         <div class="row d-flex align-items-center justify-content-center">
         <div class="col-lg-12 col-xl-6">
-            <form action="" method="post" enctypes="multipart/form-data">
+            <form action="" method="post" >
                 <div class="form-outline">
                     <label for="user_username" class="form-label">Username</label>
                     <input type="text" id="user_username" class="form-control" placeholder="Enter your name" autocomplete="off" required="required" name="user_username"/>
@@ -73,3 +82,55 @@
     
 </body>
 </html>
+<?php
+// Include your database connection here (e.g., $con)
+// Make sure $con is a valid database connection
+
+if (isset($_POST['user_login'])) {
+    $user_username = $_POST['user_username'];
+    $user_password = $_POST['user_password'];
+    
+    // Check if the database connection is established
+    if ($con) {
+        $select_query = "SELECT * FROM `user_table` WHERE username='$user_username'";
+        $result = mysqli_query($con, $select_query);
+
+        // Check if the query executed successfully
+        if ($result) {
+            $row_count = mysqli_num_rows($result);
+
+            if ($row_count > 0) {
+                $row_data = mysqli_fetch_assoc($result);
+
+                // Verify the password
+                if (password_verify($user_password, $row_data['user_password'])) {
+                    $user_ip = $_SERVER['REMOTE_ADDR'];
+                    $select_query_cart = "SELECT * FROM `cart_details` WHERE ip_address='$user_ip'";
+                    $select_cart = mysqli_query($con, $select_query_cart);
+                    $row_count_cart = mysqli_num_rows($select_cart);
+
+                    // Adjust your logic based on your requirements
+                    if ($row_count == 1 && $row_count_cart == 0) {
+                        echo "<script>alert('Login Successfully')</script>";
+                        echo "<script>window.open('./profile.php','_self')</script>";
+                    } else {
+                        echo "<script>alert('Login Successfully')</script>";
+                        echo "<script>window.open('./payment.php','_self')</script>";
+                    }
+                } else {
+                    echo "<script>alert('Invalid Credentials')</script>";
+                }
+            } else {
+                echo "<script>alert('Invalid Credentials')</script>";
+            }
+        } else {
+            // Handle the query execution error
+            echo "Query execution failed: " . mysqli_error($con);
+        }
+    } else {
+        // Handle the database connection error
+        echo "Database connection failed.";
+    }
+}
+?>
+
