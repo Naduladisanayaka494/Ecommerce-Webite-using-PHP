@@ -109,7 +109,7 @@ include('functions/commonfunctions.php');
             include('users_area/user_login.php');
 
         }else{
-            include('payment.php'); 
+            include('../payment.php'); 
         }
         ?>
         <!-- ... (previous code) ... -->

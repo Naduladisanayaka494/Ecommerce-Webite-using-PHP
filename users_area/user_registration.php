@@ -134,9 +134,21 @@ $insert_query="INSERT INTO `user_table` (username, user_email, user_password, us
   }
 
   }
+
+  $select_cart_items="Select * from `cart_details` where ip_address='$user_ip'";
+  $result_cart=mysqli_query($con,  $select_cart_items);
+  $rows_count=mysqli_num_rows($result_cart);
+  if( $rows_count>0){
+    echo "<script>alert('You have items in your cart')</script>";
+    echo "<script>window.open('../checkout.php','_self')</script>";
+  }else{
+       echo "<script>window.open('../index.php','_self')</script>";
+    }
+
+  }
   
 
-}
+
 
 
 
