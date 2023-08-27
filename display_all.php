@@ -1,7 +1,7 @@
 <?php
 include('includes/connect.php');
 include('functions/commonfunctions.php');
-
+session_start();
 ?>
 
 
@@ -41,6 +41,9 @@ include('functions/commonfunctions.php');
     .navbar .navbar-brand {
       margin-right: 20px;
     }
+      body{
+      overflow-x: hidden;
+    }
   </style>
   <link rel="stylesheet" href="style.css">
 
@@ -76,7 +79,7 @@ include('functions/commonfunctions.php');
             </div>
           </li> -->
         <li class="nav-item">
-          <a class="nav-link" href="#">Register</a>
+          <a class="nav-link" href="./users_area/user_registration.php">Register</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
@@ -114,7 +117,13 @@ include('functions/commonfunctions.php');
           <a class="nav-link" href="/">Welcome Guest <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
+                         <?php
+if (!isset($_SESSION['username'])) {
+  echo "<li class='nav-item'><a class='nav-link' href='./users_area/user_login.php'>Login</a></li>";
+} else {
+  echo "<li class='nav-item'><a class='nav-link' href='./users_area/logout.php'>Logout</a></li>";
+}
+?>
         </li>
 
     </ul>

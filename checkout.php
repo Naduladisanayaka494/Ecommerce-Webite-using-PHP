@@ -1,6 +1,7 @@
 <?php
 include('includes/connect.php');
 include('functions/commonfunctions.php');
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -88,10 +89,15 @@ include('functions/commonfunctions.php');
       <li class="nav-item active">
         <a class="nav-link" href="/">Welcome Guest <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Login</a>
-      </li>
-    </ul>
+    <?php
+if (!isset($_SESSION['username'])) {
+  echo "<li class='nav-item'><a class='nav-link' href='./users_area/user_login.php'>Login</a></li>";
+} else {
+  echo "<li class='nav-item'><a class='nav-link' href='logout.php'>Logout</a></li>";
+}
+?>
+
+    
   </nav>
 
   <div class="bg-light">
@@ -105,12 +111,12 @@ include('functions/commonfunctions.php');
       <!-- First group inside col-md-10 -->
       <div class="row">
         <?php
-        if(!isset($_SESSION['username'])){
-            include('users_area/user_login.php');
+       if (!isset($_SESSION['username'])) {
+    include('users_area/user_login.php');
+} else {
+    include('./payment.php'); // Use an absolute path
+}
 
-        }else{
-            include('../payment.php'); 
-        }
         ?>
         <!-- ... (previous code) ... -->
        

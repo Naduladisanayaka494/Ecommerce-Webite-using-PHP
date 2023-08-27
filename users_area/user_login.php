@@ -1,6 +1,7 @@
 <?php
 @include('../includes/connect.php');
 @include('../functions/commonfunctions.php');
+@session_start();
 ?>
 
 
