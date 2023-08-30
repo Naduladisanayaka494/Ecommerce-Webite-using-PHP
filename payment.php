@@ -43,7 +43,7 @@ include_once('./includes/connect.php');
                             <a href="https://www.paypal.com"><img src="./users_area/user_images/upi.jpg" alt="" target="_blank"></a>
                     </div>
                      <div class="col-md-6">
-                            <a href="order.php?user_id=<?php echo $user_id?>"><h2 class="text-center"> Pay Offline</h2></a>
+                            <a href="./users_area/order.php?user_id=<?php echo $user_id?>"><h2 class="text-center"> Pay Offline</h2></a>
                     </div>
                
                 </div>
