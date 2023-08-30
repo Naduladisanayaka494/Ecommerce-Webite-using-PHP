@@ -94,19 +94,19 @@ session_start();
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
     <ul class="navbar-nav mr-auto text-center">
-      <li class="nav-item active">
-        <a class="nav-link" href="/">Welcome Guest <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-                       <?php
+    <li class="nav-item">
+               <?php
+               if (!isset($_SESSION['username'])) {
+  echo " <a class='nav-link' href='/'>Welcome Guest <span class='sr-only'>(current)</span></a>";
+} else {
+  echo "<li class='nav-item'><a class='nav-link' href='#'>WelCome ".$_SESSION['username']." </a></li>";
+}
 if (!isset($_SESSION['username'])) {
   echo "<li class='nav-item'><a class='nav-link' href='./users_area/user_login.php'>Login</a></li>";
 } else {
   echo "<li class='nav-item'><a class='nav-link' href='./users_area/logout.php'>Logout</a></li>";
 }
 ?>
-      </li>
-    </ul>
   </nav>
 
   <div class="bg-light">
