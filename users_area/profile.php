@@ -133,20 +133,37 @@ if (!isset($_SESSION['username'])) {
         <li class="nav-item bg-info">
             <a class="nav-link text-light "  href="#"><h4> Your Profile</h4></a>
         </li>
+      <?php
+$username = $_SESSION['username'];
+$user_image_query = "SELECT * FROM `user_table` WHERE username='$username'";
+$result_image = mysqli_query($con, $user_image_query);
+
+if ($result_image) {
+    $row_image = mysqli_fetch_array($result_image);
+    $user_image = $row_image['user_image'];
+
+    echo "<li class='nav-item'>
+           <img src='./user_images/$user_image' class='profile_img' alt=''>
+          </li>";
+} else {
+    // Handle the error or provide a default image if no user image is found.
+}
+?>
+
           <li class="nav-item ">
-           <img src="../images/9a1c3a1d2cb2e9b4164e80c9ae7388bb.jpg" class="profile_img" alt="">
+            <a class="nav-link text-light "  href="profile.php">Pending Orders</a>
         </li>
           <li class="nav-item ">
-            <a class="nav-link text-light "  href="#">Pending Orders</a>
+            <a class="nav-link text-light "  href="profile.php?edit_account">Edit Account</a>
+        </li>
+           <li class="nav-item ">
+            <a class="nav-link text-light "  href="profile.php?my_orders">My Orders</a>
         </li>
           <li class="nav-item ">
-            <a class="nav-link text-light "  href="#">Edit Account</a>
-        </li>
-          <li class="nav-item ">
-            <a class="nav-link text-light "  href="#">Delete Account</a>
+            <a class="nav-link text-light "  href="profile.php?delete_account">Delete Account</a>
         </li>
          <li class="nav-item ">
-            <a class="nav-link text-light "  href="#">Logout</a>
+            <a class="nav-link text-light "  href="logout.php">Logout</a>
         </li>
 </ul>
     </div>
