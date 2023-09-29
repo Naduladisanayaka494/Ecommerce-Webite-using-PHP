@@ -178,7 +178,16 @@ if ($result_image) {
           include('edit_account.php');
 
 
-      }?>
+      }
+         if(isset($_GET['my_orders'])){
+          include('user_orders.php');
+
+
+      }
+      
+      
+      
+      ?>
         
     </div>
   
