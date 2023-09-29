@@ -102,9 +102,9 @@ session_start();
       <li class="nav-item">
                <?php
                if (!isset($_SESSION['username'])) {
-  echo " <a class='nav-link' href='/'>Welcome Guest <span class='sr-only'>(current)</span></a>";
+  echo " <a class='nav-link' href='#'>Welcome Guest <span class='sr-only'>(current)</span></a>";
 } else {
-  echo "<li class='nav-item'><a class='nav-link' href='#'>WelCome ".$_SESSION['username']." </a></li>";
+  echo "<li class='nav-item'><a class='nav-link' href='./users_area/profile.php'>WelCome ".$_SESSION['username']." </a></li>";
 }
 if (!isset($_SESSION['username'])) {
   echo "<li class='nav-item'><a class='nav-link' href='./users_area/user_login.php'>Login</a></li>";
