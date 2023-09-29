@@ -49,6 +49,11 @@ session_start();
         display:block;
         object-fit:contain
     }
+    .edit_img{
+      width:100px;
+      height:100px;
+        object-fit:contain
+    }
   </style>
   <link rel="stylesheet" class="../images/logo.png" href="../style.css">
 
@@ -168,7 +173,12 @@ if ($result_image) {
 </ul>
     </div>
     <div class="col-md-10">
-      <?php get_user_order_details()?>
+      <?php get_user_order_details();
+      if(isset($_GET['edit_account'])){
+          include('edit_account.php');
+
+
+      }?>
         
     </div>
   
