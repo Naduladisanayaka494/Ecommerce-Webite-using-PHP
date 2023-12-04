@@ -11,6 +11,24 @@ if(isset($_GET['order_id'])){
     $amount_due=$row_fetch['amount_due'];
 
 }
+if(isset($_POST['confirm_payment'])){
+    $invoice_number=$_POST['invoice_number'];
+    $amount=$_POST['amount'];
+    $payment_mode=$_POST['payment_mode'];
+$insert_query = "INSERT INTO `user_payments` (order_id, invoice_number, amount, payment_mode) VALUES ($order_id, '$invoice_number', $amount, '$payment_mode')";
+    $result=mysqli_query($con,$insert_query);
+    if($result){
+        echo "<h3 class='text-center text-light'>Successfully completed the payment</h3>";
+        echo "<script>window.open('profile.php?my_orders', '_self')</script>";
+    } else {
+        echo "Error: " . mysqli_error($con);
+    }
+   $update_orders="update `user_orders` set order_status='Complete' where order_id=$order_id";
+
+    $result_query=mysqli_query($con,$update_orders);
+}
+
+
 
 ?>
 <!DOCTYPE html>
@@ -31,7 +49,7 @@ if(isset($_GET['order_id'])){
             <h1 class="text-center text-light">Confirm Payment</h1>
         <form action="" method="post">
             <div class="form-outline my-4 text-center w-50 m-auto">
-                <input type="text" class="form-control w-50 m-auto" name="inovice_number" value="<?php echo $invoice_number?>">
+                <input type="text" class="form-control w-50 m-auto" name="invoice_number" value="<?php echo $invoice_number?>">
             </div>
               <div class="form-outline my-4 text-center w-50 m-auto">
                 <label for="" class="text-light">Amount</label>

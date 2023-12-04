@@ -184,6 +184,11 @@ if ($result_image) {
 
 
       }
+          if(isset($_GET['delete_account'])){
+          include('delete_account.php');
+
+
+      }
       
       
       
