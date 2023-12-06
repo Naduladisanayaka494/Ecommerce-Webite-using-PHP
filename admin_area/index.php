@@ -1,3 +1,8 @@
+<?php
+include('../includes/connect.php');
+include('../functions/commonfunctions.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +25,9 @@
  .footer{
   position:absolute;
   bottom:0;
+ }
+ body{
+  overflow-x:hidden;
  }
  
     </style>
@@ -51,7 +59,7 @@
         </div>
         <div class="button text-center">
           <button class="my-3"><a href="insert_product.php" class="nav-link text-light bg-info my-1">Insert Products</a></button>
-          <button><a href="" class="nav-link text-light bg-info my-1">View products</a></button>
+          <button><a href="index.php?view_products" class="nav-link text-light bg-info my-1">View products</a></button>
           <button><a href="index.php?insert_category" class="nav-link text-light bg-info my-1">Insert Categories</a></button>
           <button><a href="" class="nav-link text-light bg-info my-1">View Categories</a></button>
           <button><a href="index.php?insert_brands" class="nav-link text-light bg-info my-1">Insert Brands</a></button>
@@ -73,6 +81,9 @@
       }
       if(isset($_GET['insert_brands'])){
         include('insert_brands.php');
+      }
+       if(isset($_GET['view_products'])){
+        include('view_products.php');
       }
       ?>
     </div>
