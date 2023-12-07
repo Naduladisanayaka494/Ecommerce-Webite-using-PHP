@@ -29,6 +29,11 @@ include('../functions/commonfunctions.php');
  body{
   overflow-x:hidden;
  }
+ .product_img{
+width:10%;
+object-fit:contain;
+
+ }
  
     </style>
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
@@ -87,19 +92,23 @@ include('../functions/commonfunctions.php');
       }
       ?>
     </div>
-
+<!-- 
     <div class="bg-info p-3 text-center footer">
         <p>All right reserved D- Design by Nadula 2022</p>
 
-    </div>
+    </div> -->
   
 
   </div>
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+  <div class="bg-info p-3 text-center">
+    <?php 
+    include("../includes/footer.php")
+    ?>
+  </div>
     
 </body>
 </html>
