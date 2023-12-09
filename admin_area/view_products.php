@@ -41,7 +41,12 @@
 </td>
 
              <td><?php echo  $status;?></td>
-             <td> <a href='' class='text-light'></a> <i class='fa-solid fa-trash'></i></td>
+    <td>
+  <button onclick="location.href='index.php?edit_products'" class='text-light'>Edit</button>
+  <i class='fa-solid fa-trash'></i>
+</td>
+
+
              <td>delete</td>
 
              </tr>
