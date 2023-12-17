@@ -1,4 +1,9 @@
 
+
+
+
+
+
     <h1 class="text-center text-success">All Products</h1>
     <table class="table table-bordered-mt-5">
         <thead class="bg-info">
@@ -42,7 +47,7 @@
 
              <td><?php echo  $status;?></td>
     <td>
-  <button onclick="location.href='index.php?edit_products'" class='text-light'>Edit</button>
+  <button onclick="location.href='index.php?edit_products=<?php echo $product_id?>'" class='text-light'>Edit</button>
   <i class='fa-solid fa-trash'></i>
 </td>
 
