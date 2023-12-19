@@ -66,9 +66,9 @@ object-fit:contain;
           <button class="my-3"><a href="insert_product.php" class="nav-link text-light bg-info my-1">Insert Products</a></button>
           <button><a href="index.php?view_products" class="nav-link text-light bg-info my-1">View products</a></button>
           <button><a href="index.php?insert_category" class="nav-link text-light bg-info my-1">Insert Categories</a></button>
-          <button><a href="" class="nav-link text-light bg-info my-1">View Categories</a></button>
+          <button><a href="index.php?view_categories" class="nav-link text-light bg-info my-1">View Categories</a></button>
           <button><a href="index.php?insert_brands" class="nav-link text-light bg-info my-1">Insert Brands</a></button>
-          <button><a href="" class="nav-link text-light bg-info my-1">View Brands</a></button>
+          <button><a href="index.php?view_brands" class="nav-link text-light bg-info my-1">View Brands</a></button>
           <button><a href="" class="nav-link text-light bg-info my-1">All Brands</a></button>
           <button><a href="" class="nav-link text-light bg-info my-1">All orders</a></button>
           <button><a href="" class="nav-link text-light bg-info my-1">All payments</a></button>
@@ -95,6 +95,12 @@ object-fit:contain;
       }
           if(isset($_GET['delete_products'])){
         include('delete_products.php');
+      }
+             if(isset($_GET['view_categories'])){
+        include('view_categories.php');
+      }
+               if(isset($_GET['view_brands'])){
+        include('view_brands.php');
       }
       ?>
     </div>
