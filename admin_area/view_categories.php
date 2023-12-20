@@ -26,7 +26,7 @@ All Categories
             <td><?php echo $number;?></td>
             <td><?php echo $category_title;?></td>
                <td>
-  <button onclick="location.href='index.php?edit_products=<?php echo $product_id?>'" class='text-light'>Edit</button>
+  <button onclick="location.href='index.php?edit_category=<?php echo $category_id?>'" class='text-light'>Edit</button>
   <i class='fa-solid fa-trash'></i>
 </td>
 
