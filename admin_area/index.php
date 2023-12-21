@@ -108,6 +108,12 @@ object-fit:contain;
                if(isset($_GET['edit_brands'])){
         include('edit_brands.php');
       }
+                if(isset($_GET['delete_category'])){
+        include('delete_category.php');
+      }
+                if(isset($_GET['delete_brands'])){
+        include('delete_brands.php');
+      }
   
       ?>
     </div>

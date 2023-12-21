@@ -31,7 +31,7 @@ All Categories
 </td>
 
 
-             <td>  <button onclick="location.href='index.php?delete_products=<?php echo $product_id?>'" class='text-light'>Delete</button>
+             <td>  <button onclick="location.href='index.php?delete_category=<?php echo $category_id?>'" class='text-light'>Delete</button>
   <i class='fa-solid fa-trash'></i></td>
         </tr>
         <?php
