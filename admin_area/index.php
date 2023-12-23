@@ -72,10 +72,9 @@ object-fit:contain;
           <button><a href="index.php?view_categories" class="nav-link text-light bg-info my-1">View Categories</a></button>
           <button><a href="index.php?insert_brands" class="nav-link text-light bg-info my-1">Insert Brands</a></button>
           <button><a href="index.php?view_brands" class="nav-link text-light bg-info my-1">View Brands</a></button>
-          <button><a href="" class="nav-link text-light bg-info my-1">All Brands</a></button>
-          <button><a href="" class="nav-link text-light bg-info my-1">All orders</a></button>
-          <button><a href="" class="nav-link text-light bg-info my-1">All payments</a></button>
-          <button><a href="" class="nav-link text-light bg-info my-1">List Users</a></button>
+          <button><a href="index.php?list_orders" class="nav-link text-light bg-info my-1">All orders</a></button>
+          <button><a href="index.php?list_payments" class="nav-link text-light bg-info my-1">All payments</a></button>
+          <button><a href="index.php?list_users" class="nav-link text-light bg-info my-1">List Users</a></button>
           <button><a href="" class="nav-link text-light bg-info my-1">Logout</a></button>
         </div>
 
@@ -116,6 +115,18 @@ object-fit:contain;
       }
                 if(isset($_GET['delete_brands'])){
         include('delete_brands.php');
+      }
+                   if(isset($_GET['list_orders'])){
+        include('list_orders.php');
+      }
+                    if(isset($_GET['delete_order'])){
+        include('delete_order.php');
+      }
+                     if(isset($_GET['list_payments'])){
+        include('list_payments.php');
+      }
+                      if(isset($_GET['list_users'])){
+        include('list_users.php');
       }
   
       ?>

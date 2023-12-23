@@ -19,6 +19,7 @@ $get_user = "SELECT * FROM `user_table` WHERE username='$username'";
 $result = mysqli_query($con, $get_user);
 $row_fetch = mysqli_fetch_assoc($result);
 $user_id = $row_fetch['user_id'];
+echo "$user_id";
 
 $number = 1; // Initialize $number here
 
@@ -67,7 +68,7 @@ $number = 1; // Initialize $number here
        if($order_status=='complete'){
         echo "<td>Paid</td>";
        }else{
-        echo  "<td><a href='confirm_payment.php?order_id=$order_id' class='text-light'>Confirm</a></td>
+        echo  "<td><button class='btn btn-primary'><a href='confirm_payment.php?order_id=$order_id' class='text-light'>Confirm</a></button></td>
         </tr>";
        }
 
