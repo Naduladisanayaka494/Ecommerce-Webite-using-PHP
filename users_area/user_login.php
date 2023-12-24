@@ -84,8 +84,6 @@
 </body>
 </html>
 <?php
-// Include your database connection here (e.g., $con)
-// Make sure $con is a valid database connection
 
 if (isset($_POST['user_login'])) {
     $user_username = $_POST['user_username'];

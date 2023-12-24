@@ -12,7 +12,7 @@
             <th>User Image</th>
            <th>User Address</th>
            <th>User Mobile</th>
-            <th>UDelete</th>
+            <th>Delete</th>
    
 
         </tr>
@@ -20,7 +20,7 @@
     <tbody class='bg-secondary text-light'>";
 
     if($row_count==0){
-        echo "<h2 class='bg-danger text-center mt-5'>No Payments yet</h2>";
+        echo "<h2 class='bg-danger text-center mt-5'>No users</h2>";
     }else{
         $number=0;
         while($row_data=mysqli_fetch_assoc($result)){
@@ -31,25 +31,22 @@
             $user_address=$row_data['user_address'];
             $user_mobile=$row_data['user_mobile'];
             $number++;
-            echo "
-            <td> $number</td>
-            <td> $user_name</td>
-            <td> $user_email</td>
-            <td> <img src='../users_area/user_images/ $user_image'alt='$user_name' /></td>
-            <td> $user_address </td>
-            <td>  $user_mobile </td>
-       <td>
-    <button type='button' class='btn btn-secondary' onclick='location.href='list_orders.php?delete_order=<?php echo   $user_id ?>
-        Delete
-    </button>
-</td>
-
-        </tr>";
+      
         }
 
     }
         ?>
-    
+
+         <td><?php echo $number; ?></td>
+            <td> <?php echo   $user_name; ?></td>
+            <td>  <?php echo  $user_email; ?></td>
+            <td> <img src='../users_area/user_images/ <?php echo $user_image; ?>'alt='$user_name' /></td>
+            <td> <?php echo  $user_address; ?> </td>
+            <td>  <?php echo    $user_mobile; ?> </td>
+          <td> <button class='btn btn-secondary' onclick="location.href='index.php?delete_users=<?php echo $user_id; ?>'">Delete</button></td>
+
+     </tr>
     </tbody>
 
 </table>
+ 

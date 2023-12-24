@@ -1,6 +1,7 @@
 <?php
 include('../includes/connect.php');
 include('../functions/commonfunctions.php');
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +50,18 @@ object-fit:contain;
         <nav class="navbar navbar-expand-lg">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a href="" class="nav-link">Welcome guest</a>
+               <?php
+               if (!isset($_SESSION['username'])) {
+
+  echo "<li class='nav-item'><a class='nav-link' href='./users_area/profile.php'>WelCome ".$_SESSION['adminname']." </a></li>";
+}
+if (!isset($_SESSION['username'])) {
+  echo "<li class='nav-item'><a class='nav-link' href='./admin_registration.php'>Login</a></li>";
+} else {
+  echo "<li class='nav-item'><a class='nav-link' href='./admin_login.php'>Logout</a></li>";
+}
+?>
+
         </li>
       </ul>
 
@@ -75,7 +87,7 @@ object-fit:contain;
           <button><a href="index.php?list_orders" class="nav-link text-light bg-info my-1">All orders</a></button>
           <button><a href="index.php?list_payments" class="nav-link text-light bg-info my-1">All payments</a></button>
           <button><a href="index.php?list_users" class="nav-link text-light bg-info my-1">List Users</a></button>
-          <button><a href="" class="nav-link text-light bg-info my-1">Logout</a></button>
+          <button><a href="./admin_login.php" class="nav-link text-light bg-info my-1">Logout</a></button>
         </div>
 
       </div>
@@ -127,6 +139,9 @@ object-fit:contain;
       }
                       if(isset($_GET['list_users'])){
         include('list_users.php');
+      }
+                       if(isset($_GET['delete_users'])){
+        include('delete_users.php');
       }
   
       ?>

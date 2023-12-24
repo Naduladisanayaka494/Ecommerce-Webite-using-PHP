@@ -47,12 +47,12 @@
 
              <td><?php echo  $status;?></td>
     <td>
-  <button onclick="location.href='index.php?edit_products=<?php echo $product_id?>'" class='text-light'>Edit</button>
+  <button  class='btn btn-primary'onclick="location.href='index.php?edit_products=<?php echo $product_id?>'" class='text-light'>Edit</button>
   <i class='fa-solid fa-trash'></i>
 </td>
 
 
-             <td>  <button onclick="location.href='index.php?delete_products=<?php echo $product_id?>'" class='text-light'>Delete</button>
+             <td>  <button class='btn btn-secondary'onclick="location.href='index.php?delete_products=<?php echo $product_id?>'" class='text-light'>Delete</button>
   <i class='fa-solid fa-trash'></i></td>
 
              </tr>
